@@ -1,0 +1,37 @@
+{
+  "name": "ironsphere-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "npm run clean && webpack --progress --colors --bail",
+    "watch": "webpack --progress --colors --watch",
+    "test": "npm run test:lint && npm run test:unit && npm run build && npm run test:integration",
+    "test:integration": "jest --runInBand test[\\\\/]integration",
+    "test:lint": "eslint . --ext .js,.jsx",
+    "test:unit": "jest test[\\\\/]unit",
+    "test:smoke": "jest --runInBand test[\\\\/]smoke",
+    "docs": "jsdoc -c .jsdoc.json",
+    "version": "json -f package.json -I -e \"this.repository.sha = '$(git log -n1 --pretty=format:%H)'\"",
+    "clean": "rimraf ./build && mkdirp build && rimraf ./dist && mkdirp dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caxapexac/IronsphereLanding.git"
+  },
+  "author": "caxapexac",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caxapexac/IronsphereLanding/issues"
+  },
+  "homepage": "https://github.com/caxapexac/IronsphereLanding#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "express": "^4.17.1",
+    "react": "^16.12.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
